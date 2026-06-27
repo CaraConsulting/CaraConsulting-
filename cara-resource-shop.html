@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cara Bronstein – Nutrition & Wellbeing Resources for the Disability Sector</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #47B593;
+    --teal-dark: #0F6E56;
+    --teal-light: #E1F5EE;
+    --teal-mid: #d0f0e8;
+    --navy: #1B365D;
+    --text: #1a1a1a;
+    --text-muted: #5f5f5f;
+    --text-faint: #999;
+    --bg: #f8f8f6;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.1);
+    --radius: 10px;
+    --amber-light: #FAEEDA;
+    --amber-dark: #854F0B;
+    --blue-light: #E6F1FB;
+    --blue-dark: #185FA5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .logo { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
+  .logo em { color: var(--teal); font-style: normal; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 14px; color: var(--text-muted); transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--teal); color: white; border: none;
+    padding: 8px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--teal-dark); }
+
+  /* Hero */
+  .hero {
+    max-width: 680px; margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+  }
+  .hero-label {
+    display: inline-block;
+    background: var(--teal-light); color: var(--teal-dark);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700; line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 520px; margin: 0 auto 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 11px 22px; border-radius: 8px;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    border: none; text-decoration: none; display: inline-block;
+    transition: all 0.15s;
+  }
+  .btn-fill { background: var(--teal); color: white; }
+  .btn-fill:hover { background: var(--teal-dark); }
+  .btn-ghost { background: white; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: #bbb; }
+
+  /* Section layout */
+  .section { max-width: 780px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-label {
+    font-size: 12px; font-weight: 600; color: var(--teal);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .section-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .section-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 2.5rem; }
+
+  /* Alternating stripe */
+  .stripe { background: white; }
+
+  /* Product grid */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .product-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .product-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .product-thumb {
+    height: 100px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px;
+  }
+  .product-body { padding: 1.1rem; }
+  .product-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--teal-dark); background: var(--teal-light);
+    padding: 2px 8px; border-radius: 20px;
+    display: inline-block; margin-bottom: 0.6rem;
+  }
+  .product-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.3; }
+  .product-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-size: 16px; font-weight: 700; color: var(--teal-dark); }
+  .product-btn {
+    background: var(--teal); color: white; border: none;
+    padding: 6px 14px; border-radius: 7px;
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .product-btn:hover { background: var(--teal-dark); }
+
+  /* Bundle */
+  .bundle-card {
+    background: white;
+    border: 2px solid var(--teal);
+    border-radius: 14px;
+    padding: 2rem;
+    position: relative;
+    margin-top: 0.5rem;
+  }
+  .bundle-badge {
+    position: absolute; top: -13px; left: 1.5rem;
+    background: var(--teal); color: white;
+    font-size: 11px; font-weight: 600;
+    padding: 3px 12px; border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+  .bundle-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 0.5rem; }
+  .bundle-card > p { font-size: 14px; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.6; }
+  .bundle-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+  .bundle-item {
+    font-size: 12px; color: var(--text-muted);
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 4px 12px; border-radius: 20px;
+  }
+  .bundle-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .bundle-price-group { display: flex; align-items: baseline; gap: 8px; }
+  .bundle-price { font-size: 24px; font-weight: 700; color: var(--teal-dark); }
+  .bundle-was { font-size: 14px; color: var(--text-faint); text-decoration: line-through; }
+  .bundle-saving { font-size: 12px; color: var(--teal-dark); background: var(--teal-light); padding: 2px 8px; border-radius: 20px; }
+
+  /* About */
+  .about-row { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
+  .about-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700; color: var(--teal-dark);
+    flex-shrink: 0;
+  }
+  .about-text { flex: 1; min-width: 240px; }
+  .about-text h2 { font-size: 18px; font-weight: 700; margin-bottom: 0.6rem; }
+  .about-text p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.75rem; }
+  .cred-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cred-pill {
+    font-size: 12px; padding: 4px 10px; border-radius: 20px;
+    background: white; border: 1px solid var(--border); color: var(--text-muted);
+  }
+
+  /* Why cards */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .why-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .why-icon { font-size: 24px; margin-bottom: 0.6rem; }
+  .why-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 0.3rem; }
+  .why-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* Contact */
+  .contact-box {
+    background: white; border: 1px solid var(--border);
+    border-radius: 14px; padding: 2.5rem;
+    text-align: center;
+  }
+  .contact-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 0.5rem; }
+  .contact-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .contact-email { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); margin-top: 1.25rem; text-decoration: none; }
+  .contact-email:hover { color: var(--teal-dark); }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 13px; color: var(--text-faint);
+    border-top: 1px solid var(--border);
+    background: white;
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Cara <em>Bronstein</em></div>
+  <ul class="nav-links">
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#bundle">Bundles</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#resources" class="nav-cta">Shop now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">For support workers and coordinators</div>
+  <h1>Nutrition and wellbeing resources built for the <em>disability sector</em></h1>
+  <p>Practical, evidence-informed tools created by an Accredited Nutritionist with hands-on NDIS experience — so you can better support your participants' health and wellbeing.</p>
+  <div class="hero-btns">
+    <a href="#resources" class="btn btn-fill">Browse resources</a>
+    <a href="#bundle" class="btn btn-ghost">View bundles</a>
+  </div>
+</section>
+
+<div class="stripe">
+<section class="section" id="resources">
+  <div class="section-label">Resources</div>
+  <div class="section-title">Individual downloads</div>
+  <div class="section-sub">Ready to use straight away — practical tools for everyday support work.</div>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-thumb" style="background:#E1F5EE">🥗</div>
+      <div class="product-body">
+        <div class="product-tag">Nutrition</div>
+        <h3>Meal planning guide for participants</h3>
+        <p>Help participants plan nutritious, budget-friendly meals with this simple visual guide designed for support workers to use together with participants.</p>
+        <div class="product-footer">
+          <span class="product-price">$12</span>
+          <button class="product-btn">Get it</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-thumb" style="background:#d0f0e8">💚</div>
+      <div class="product-body">
+        <div class="product-tag">Wellbeing</div>
+        <h3>Wellbeing check-in tool</h3>
+        <p>A weekly check-in template to help support workers track participant wellbeing across key areas and flag concerns early.</p>
+        <div class="product-footer">
+          <span class="product-price">$10</span>
+          <button class="product-btn">Get it</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-thumb" style="background:#E6F1FB">📋</div>
+      <div class="product-body">
+        <div class="product-tag">Nutrition</div>
+        <h3>Nutrition basics for support workers</h3>
+        <p>An accessible primer to help support workers have informed conversations about food, eating, and health with their participants.</p>
+        <div class="product-footer">
+          <span class="product-price">$15</span>
+          <button class="product-btn">Get it</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-thumb" style="background:#FAEEDA">🌿</div>
+      <div class="product-body">
+        <div class="product-tag">Wellbeing</div>
+        <h3>Self-care planning template</h3>
+        <p>A co-designed self-care tool covering sleep, movement, food, and social connection — built to complete together with participants.</p>
+        <div class="product-footer">
+          <span class="product-price">$10</span>
+          <button class="product-btn">Get it</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<section class="section" id="bundle">
+  <div class="section-label">Bundles</div>
+  <div class="section-title">Save with a bundle</div>
+  <div class="section-sub">Everything you need in one download, at a better price.</div>
+  <div class="bundle-card">
+    <div class="bundle-badge">Best value</div>
+    <h3>Support worker nutrition and wellbeing toolkit</h3>
+    <p>All four resources in one — everything a support worker needs to confidently support participants' nutrition and overall wellbeing. Built with the disability sector in mind, not adapted from generic health content.</p>
+    <div class="bundle-items">
+      <span class="bundle-item">Meal planning guide</span>
+      <span class="bundle-item">Wellbeing check-in tool</span>
+      <span class="bundle-item">Nutrition basics</span>
+      <span class="bundle-item">Self-care planning template</span>
+    </div>
+    <div class="bundle-footer">
+      <div class="bundle-price-group">
+        <span class="bundle-price">$35</span>
+        <span class="bundle-was">$47</span>
+        <span class="bundle-saving">Save $12</span>
+      </div>
+      <button class="btn btn-fill">Get the bundle</button>
+    </div>
+  </div>
+</section>
+
+<div class="stripe">
+<section class="section" id="about">
+  <div class="section-label">Who made this</div>
+  <div class="about-row">
+    <div class="about-avatar">CB</div>
+    <div class="about-text">
+      <h2>Created by Cara Bronstein</h2>
+      <p>I'm a disability consultant with a Bachelor of Nutrition Science and years of hands-on NDIS experience. I created these resources because I kept seeing a gap — support workers who genuinely care about their participants' health, but don't always have the tools or knowledge to help effectively.</p>
+      <p>Everything here is practical, evidence-informed, and built specifically for the disability sector — not generic wellness content repurposed from somewhere else.</p>
+      <div class="cred-pills">
+        <span class="cred-pill">Disability Consultant</span>
+        <span class="cred-pill">Bachelor of Nutrition Science</span>
+        <span class="cred-pill">Accredited Nutritionist (ANutr)</span>
+        <span class="cred-pill">NDIS experience</span>
+        <span class="cred-pill">Melbourne-based</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="section">
+  <div class="section-label">Why these resources</div>
+  <div class="section-title">Built for real support work</div>
+  <div class="section-sub">Not generic wellness content — resources made for your role, your participants, and your sector.</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🎓</div>
+      <h3>Accredited expertise</h3>
+      <p>Created by an Accredited Nutritionist with a Bachelor of Nutrition Science — not wellness influencer content.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">♿</div>
+      <h3>Disability-specific</h3>
+      <p>Designed with NDIS participants and support workers in mind from the ground up.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Ready to use</h3>
+      <p>Download and use straight away — no customisation or professional background required.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h3>Affordable</h3>
+      <p>Priced for individual support workers and small organisations, not big budgets.</p>
+    </div>
+  </div>
+</section>
+
+<div class="stripe">
+<section class="section" id="contact">
+  <div class="contact-box">
+    <h2>Questions or custom requests?</h2>
+    <p>Looking for something specific, or interested in a resource package tailored to your organisation? I'd love to hear from you.</p>
+    <a href="mailto:cara@thelmcgroup.com.au" class="btn btn-fill">Get in touch</a>
+    <br>
+    <a href="mailto:cara@thelmcgroup.com.au" class="contact-email">
+      ✉️ cara@thelmcgroup.com.au
+    </a>
+  </div>
+</section>
+</div>
+
+<footer>
+  © 2026 Cara Bronstein &nbsp;·&nbsp; Nutrition and Wellbeing Resources for the Disability Sector &nbsp;·&nbsp; Melbourne, VIC
+</footer>
+
+</body>
+</html>
